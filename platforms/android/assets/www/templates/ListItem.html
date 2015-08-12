@@ -1,0 +1,15 @@
+<div class="list-item" data-id="{{ graphic.id }}">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<div class="item-thumbnail" style="background-image:url('{{ attr.thumb_url }}')"></div>
+				</td>
+				<td>
+					<h6 class="item-title">{{ attr.name|safe }}</h6>
+					<p class="item-caption">{{ attr.description|safe }}</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

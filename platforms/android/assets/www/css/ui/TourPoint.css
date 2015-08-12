@@ -1,0 +1,21 @@
+.tour-point .photo-pane{
+	height: 40%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.tour-point .text-pane{
+	height: calc(30% - 25px);
+	padding: 0 15px;
+	overflow: auto;
+}
+
+.tour-point .map-pane{
+	height: calc(30% - 25px);
+}
+
+.tour-point .nav-bar{
+	height: 50px;
+	background-color: #5F7D8C;
+}

@@ -5,18 +5,73 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <title>Map Tour Cordova Benchmark</title>
 
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
   <link rel="stylesheet" href="https://js.arcgis.com/4.0beta1/esri/css/esri.css">
   <link rel="stylesheet" href="css/core/Core.css">
   <link rel="stylesheet" href="css/ui/Map.css">
   <link rel="stylesheet" href="css/ui/List.css">
+  <link rel="stylesheet" href="css/ui/TourPoint.css">
 </head>
 <body>
 
-  <div class="list activity-pane active"></div>
-  <div class="map activity-pane"></div>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">MapTour</span>
+        <div class="mdl-layout-spacer"></div>
+        <button id="demo-menu-lower-right"
+                class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">share</i>
+        </button>
 
-  
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+            for="demo-menu-lower-right">
+          <li class="mdl-menu__item">Facebook</li>
+          <li class="mdl-menu__item">Twitter</li>
+          <li class="mdl-menu__item">Link</li>
+        </ul>
+      </div>
+      <!-- Tabs -->
+      <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+        <a href="#map-pane" class="mdl-layout__tab is-active">Map</a>
+        <a href="#list-pane" class="mdl-layout__tab">List</a>
+        <a href="#tour-point-pane" class="mdl-layout__tab">Tour Point</a>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Slide Nav Title</span>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="loading-pane activity-pane active"></div>
+      <section class="mdl-layout__tab-panel is-active" id="map-pane">
+        <div class="page-content"><div class="map activity-pane"><div class="zoom-buttons"></div></div></div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="list-pane">
+        <div class="page-content">
+          <div class="list activity-pane">
+          </div>
+        </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="tour-point-pane">
+        <div class="page-content">
+          <div class="tour-point activity-pane">
+            <div class="photo-pane"></div>
+            <div class="text-pane"></div>
+            <div class="map-pane"></div>
+            <div class="nav-bar"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+
   <script type="text/javascript" src="cordova.js"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
   <script type="text/javascript">
     var dojoConfig = {
       parseOnLoad: true,
@@ -26,12 +81,14 @@
         {
           name: 'app',
           location: location.pathname.replace(/\/[^/]+$/, '/') + 'js'
+        },{
+          name: 'template',
+          location: location.pathname.replace(/\/[^/]+$/, '/') + 'templates'
         }
       ]
     };
   </script>  
   <script src="https://js.arcgis.com/4.0beta1/"></script>
-  <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
 
   <script type="text/javascript">
     require(['app/core/Core']);
